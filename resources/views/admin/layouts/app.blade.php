@@ -10,4 +10,5 @@
 @include('admin.layouts.partials.javascripts')
 @yield('js')
 </body>
+
 </html>

@@ -1,4 +1,4 @@
-@extends('admin.layouts.page',['content_title'=>'Clients'])
+@extends('admin.layouts.page',['content_title'=>trans('app.clients'), 'icon'=>'briefcase'])
 
 @section('content')
     <section class="content">
@@ -9,7 +9,8 @@
                         <div class="card-header">
                             <h3 class="card-title">@lang('app.list')</h3>
                             <div>
-                                <a href="{{route('admin.clients.create')}}" style = "float:right" class="btn btn-success" href="">@lang('app.new')</a>
+                                <a href="{{route('admin.clients.create')}}" style="float:right" class="btn btn-success"
+                                   href="">@lang('app.new')</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -30,18 +31,12 @@
                                                     @lang('app.created_at')
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('app.first_name')
+                                                    @lang('app.name')
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('app.last_name')
+                                                    @lang('app.email')
                                                 </th>
-                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('app.phone')
-                                                </th>
-                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('app.address')
-                                                </th>
-                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">
+                                                <th class="sorting" tabindex="0" rowspan="1" colspan="2">
                                                     @lang('app.actions')
                                                 </th>
                                             </tr>
@@ -50,12 +45,19 @@
                                             @foreach($clients as $client)
                                                 <tr class="odd">
                                                     <td>{{$client->created_at ?? ''}}</td>
-                                                    <td>{{$client->first_name ?? ''}}</td>
-                                                    <td>{{$client->last_name ?? ''}}</td>
-                                                    <td>{{$client->phone ?? ''}}</td>
-                                                    <td>{{$client->address ?? ''}}</td>
-                                                    <td><a class="btn btn-info"
+                                                    <td>{{$client->name ?? ''}}</td>
+                                                    <td>{{$client->email ?? ''}}</td>
+                                                    <td><a class="btn btn-primary"
                                                            href="{{route('admin.clients.edit', $client->id)}}">@lang('app.edit')</a>
+                                                    </td>
+                                                    <td>
+                                                        <form action="{{route('admin.clients.destroy', $client->id)}}"
+                                                              method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                    class="btn btn-danger">@lang('app.destroy')</button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach

@@ -54,5 +54,4 @@ return [
     'enter_description'=> 'Aprašykite',
 
     'logout' => 'Atsijungti',
-    'programming_courses' => 'Programavimo kursai'
 ];

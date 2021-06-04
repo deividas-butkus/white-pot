@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImageUserTable extends Migration
+class CreateReviewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateImageUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('image_user', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('image_id')->constrained('images');
+        Schema::create('reviews', function (Blueprint $table) {
+            $table->id();
+            $table->smallInteger('user_rating');
+            $table->text('review');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +29,6 @@ class CreateImageUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('image_user');
+        Schema::dropIfExists('reviews');
     }
 }

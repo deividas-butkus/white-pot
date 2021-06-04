@@ -30,9 +30,9 @@ return [
     'phone' => 'Phone',
     'address' => 'Address',
     'actions'=> 'Actions',
-    'edit'=> 'Keisti',
-    'create' => 'Kurti',
-    'new' => 'Naujas',
+    'edit'=> 'Edit',
+    'create' => 'Create',
+    'new' => 'New',
     'new_entry' => 'New entry',
     'users_list' => 'Users list',
     'users' => 'Users',
@@ -45,7 +45,7 @@ return [
     'enter_address' => 'Enter address',
     'enter_password' => 'Enter password',
 
-    'email' => 'email',
+    'email' => 'Email',
     'password' => 'password',
     'submit' => 'Submit',
 
@@ -55,4 +55,31 @@ return [
     'enter_description'=> 'Enter description',
 
     'logout' => 'Logout',
+
+    'create_entry' => 'Create',
+    'edit_entry' => 'Edit',
+    'destroy' => 'Delete',
+
+    'recipes' => 'Recipes',
+    'name' => 'Name',
+    'cooking_directions' => 'Cooking directions',
+    'cooking_time' => 'Cooking time',
+    'portions' => 'Portions',
+    'user_rating' => 'User\'s Rating',
+    'editors_choice' => 'Editor\'s Choice',
+
+    'enter_name' => 'Enter name',
+    'enter_cooking_directions' => 'Enter cooking directions',
+    'enter_cooking_time' => 'Enter cooking time',
+    'enter_portions' => 'Enter portions',
+
+    'ingredients' => 'Ingredients',
+    'price_per_gram' => 'Price per gram',
+    'enter_price_per_gram' => 'Enter price per gram',
+    'measure' => 'Measure',
+    'ingredients_quantity' => 'Ingredients and quantity',
+    'units' => 'Units',
+    'weight' => 'Weight',
+    'enter_weight' => 'Enter weight',
+    'table_spoon' => 'table spoon',
 ];

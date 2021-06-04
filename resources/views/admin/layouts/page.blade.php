@@ -1,10 +1,11 @@
-@extends('admin.layouts.app',['body_class'=>' sidebar-mini layout-fixed'])
+@extends('admin.layouts.app',['body_class'=>'sidebar-mini layout-fixed'])
 
 @section('page')
     <div class="wrapper">
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{asset('assets/admin/images/logo.png')}}" alt="logo" height="60" width="60">
+            <img class="animation__shake" src="/assets/img/white-pot.png" alt="White Pot logo" height="60" width="60"
+                 sty>
         </div>
         <!-- NAVBAR-->
     @include('admin.layouts.partials.navbar')
@@ -18,14 +19,11 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">{{$content_title ?? 'Welcome'}}</h1>
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard v1</li>
-                            </ol>
-                        </div><!-- /.col -->
+                            <h1 class="m-0">
+                                <i class="nav-icon fas fa-{{$icon ?? ''}}"></i>
+                                {{$content_title ?? 'Admin Page Blade'}}
+                            </h1>
+                        </div>
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
             </div>

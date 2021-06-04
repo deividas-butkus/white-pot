@@ -1,14 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\UpdateUsersRequest;
-use Throwable;
+use Illuminate\Http\RedirectResponse;
+use Carbon\Carbon;
 
+/**
+ * Class UserController
+ * @package App\Http\Controllers
+ */
 class UserController extends Controller
 {
     /**
@@ -16,7 +19,7 @@ class UserController extends Controller
      */
     public function index(): View
     {
-        $users = User::with('images')->get();
+        $users = User::all();
         return view('admin.users.index', compact('users'));
     }
 
@@ -51,11 +54,21 @@ class UserController extends Controller
      * @param UpdateUsersRequest $request
      * @param User $user
      * @return RedirectResponse
-     * @throws Throwable
      */
     public function update(UpdateUsersRequest $request, User $user): RedirectResponse
     {
-        $user->createUser($request);
+        $user->fill($request->all())->save();
         return redirect()->route('admin.users.index');
+    }
+
+    /**
+     * @param User $user
+     * @return \Illuminate\Contracts\Foundation\Application|RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroy(User $user)
+    {
+        $user->deleted_at = Carbon::now();
+        $user->save();
+        return redirect(route('admin.users.index'));
     }
 }

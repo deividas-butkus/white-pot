@@ -3,28 +3,33 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Client;
-use Illuminate\Contracts\View\View;
+use App\Models\Admin\Client;
+use App\Http\Requests\Admin\UpdateClientsRequest;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\UpdateClientsRequest;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Carbon;
 
+/**
+ * Class ClientController
+ * @package App\Http\Controllers\Admin
+ */
 class ClientController extends Controller
 {
     /**
      * @return View
      */
-    public function index(): view
+    public function index(): View
     {
-        $clients = Client::get();
+        $clients = Client::all();
         return view('admin.clients.index', compact('clients'));
     }
 
     /**
      * @return View
      */
-    public function create(): view
+    public function create(): View
     {
-        return $this->edit(new Client());
+       return $this->edit(new Client());
     }
 
     /**
@@ -40,7 +45,7 @@ class ClientController extends Controller
      * @param Client $client
      * @return View
      */
-    public function edit(Client $client): view
+    public function edit(Client $client): View
     {
         $model = $client;
         return view('admin.clients.edit', compact('model'));
@@ -55,5 +60,16 @@ class ClientController extends Controller
     {
         $client->fill($request->all())->save();
         return redirect()->route('admin.clients.index');
+    }
+
+    /**
+     * @param Client $client
+     * @return \Illuminate\Contracts\Foundation\Application|RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroy(Client $client)
+    {
+        $client->deleted_at = Carbon::now();
+        $client->save();
+        return redirect(route('admin.clients.index'));
     }
 }

@@ -1,4 +1,4 @@
-@extends('admin.layouts.page',['content_title'=>trans('app.users')])
+@extends('admin.layouts.page',['content_title'=>trans('app.users'), 'icon'=>'user'])
 
 @section('content')
     <section class="content">
@@ -36,15 +36,15 @@
                                                     @lang('app.last_name')
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
+                                                    @lang('app.email')
+                                                </th>
+                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">
                                                     @lang('app.phone')
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
                                                     @lang('app.address')
                                                 </th>
-                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('app.image')
-                                                </th>
-                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">
+                                                <th class="sorting" tabindex="0" rowspan="1" colspan="2">
                                                     @lang('app.actions')
                                                 </th>
                                             </tr>
@@ -55,17 +55,20 @@
                                                     <td>{{$user->created_at ?? ''}}</td>
                                                     <td>{{$user->first_name ?? ''}}</td>
                                                     <td>{{$user->last_name ?? ''}}</td>
+                                                    <td>{{$user->email ?? ''}}</td>
                                                     <td>{{$user->phone ?? ''}}</td>
                                                     <td>{{$user->address ?? ''}}</td>
-                                                    <td>
-                                                        @foreach($user->images as $image)
-                                                            <a href="/storage/uploads/images/original/{{$image->title ?? ''}}" class="table_image_link">
-                                                                <img src="/storage/uploads/images/thumb/{{$image->title ?? ''}}" alt="not available" width="80"/>
-                                                            </a>
-                                                        @endforeach
-                                                    </td>
                                                     <td><a class="btn btn-info"
                                                            href="{{route('admin.users.edit', $user->id)}}">@lang('app.edit')</a>
+                                                    </td>
+                                                    <td>
+                                                        <form action="{{route('admin.users.destroy', $user->id)}}"
+                                                              method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                    class="btn btn-danger">@lang('app.destroy')</button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach
