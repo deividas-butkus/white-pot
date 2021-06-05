@@ -3,7 +3,14 @@
         <h1>Recipes</h1>
         <!--        <Table/>-->
         <ul>
-            <li v-for="recipe in recipes">{{ recipe.name }}</li>
+            <li v-for="recipe in recipes" :key="recipe.name">
+                <h4>{{ recipe.name }}</h4>
+                <p><strong>Paruošimo nurodymai: </strong>{{recipe.cooking_directions}}</p>
+                <p><strong>Paruošimo laikas: </strong>{{recipe.cooking_time}} min.</p>
+                <p><strong>Porcijos: </strong>{{recipe.portions}}</p>
+            </li>
+        </ul>
+        <ul>
         </ul>
     </ContainerLayout>
 </template>

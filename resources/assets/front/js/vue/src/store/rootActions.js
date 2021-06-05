@@ -13,16 +13,6 @@ export default {
             commit('courses/SAVE_ERROR', errMsg);
         }
     },
-    async getRecipes({commit}) {
-        try {
-            const recipes = await Promise.all([
-                API.getRecipes(),
-            ]);
-            commit('recipes/SAVE_RECIPES', recipes);
-        } catch (errMsg) {
-            commit('recipes/SAVE_ERROR', errMsg);
-        }
-    },
 };
 
 
