@@ -1,7 +1,16 @@
 import axios from 'axios';
 
 class API {
-  static domain = 'http://courses_example.test';
+  static domain = 'http://127.0.0.1:8000';
+
+    static async getRecipes() {
+        try {
+            const { data } = await axios.get(`${this.domain}/api/recipes`);
+            return data;
+        } catch (err) {
+            throw err.message;
+        }
+    }
 
   static async getLocations() {
     try {

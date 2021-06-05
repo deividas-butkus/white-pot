@@ -8,6 +8,6 @@
 @yield('page')
 
 @include('front.layouts.partials.javascripts')
-@yield('js')
+{{--@yield('js')--}}
 </body>
 </html>

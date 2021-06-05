@@ -22,7 +22,6 @@ class RecipeController extends Controller
     public function index(): View
     {
         $recipes = Recipe::with('ingredients')->get();
-        dd($recipes);
         return view('admin.recipes.index', compact('recipes'));
     }
 

@@ -20,6 +20,7 @@ use App\Http\Controllers\Api\V1\ApiIngredientController;
 Route::prefix('/')->name('api.')->group(function () {
     Route::prefix('recipes')->name('recipes.')->group(function () {
         Route::get('/', [ApiRecipeController::class, 'index']);
+        Route::post('/create', [ApiRecipeController::class, 'create']);
     });
     Route::prefix('ingredients')->name('ingredients.')->group(function () {
         Route::get('/', [ApiIngredientController::class, 'index']);

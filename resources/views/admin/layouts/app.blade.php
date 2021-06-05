@@ -8,7 +8,7 @@
 @yield('page')
 
 @include('admin.layouts.partials.javascripts')
-@yield('js')
+{{--@yield('js')--}}
 </body>
 
 </html>

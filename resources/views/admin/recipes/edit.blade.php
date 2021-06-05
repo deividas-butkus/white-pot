@@ -95,7 +95,7 @@
                         <div class="card-body row">
                             <div class="form-group col-6">
                                 <label for="ingredients">@lang('app.ingredient')</label>
-                                <select class="select2" name="ingredients[]" id="ingredients"
+                                <select multiple class="select2" name="ingredients[]" id="ingredients"
                                         data-placeholder="Select ingredient" style="width: 100%;">
                                     @foreach($ingredients as $ingredient)
                                         <option value="">@lang('app.select')</option>

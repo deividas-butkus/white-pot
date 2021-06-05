@@ -14,7 +14,7 @@ const mix = require('laravel-mix');
 
 mix
     .js('resources/assets/front/js/vue/src/main.js', 'public/assets/front/js/vue').vue()
-    .js('resources/assets/front/js/app.js', 'public/assets/front/js').vue()
+    .js('resources/assets/front/js/app.js', 'public/assets/front/js')
     .sass('resources/assets/front/sass/app.scss', 'public/assets/front/css')
 
     .js('resources/assets/admin/js/app.js', 'public/assets/admin/js')

@@ -4,7 +4,7 @@
     <a href="{{ route('admin.') }}" class="brand-link">
         <img src="/assets/img/white-pot.png" alt="White Pot logo" class="brand-image img-circle elevation-3"
              style="opacity: .8">
-        <span class="brand-text font-weight-light">Katilas baltas</span>
+        <span class="brand-text font-weight-light">{{ config('app.name', 'Katilas baltas') }}</span>
     </a>
 
     <!-- Sidebar -->
